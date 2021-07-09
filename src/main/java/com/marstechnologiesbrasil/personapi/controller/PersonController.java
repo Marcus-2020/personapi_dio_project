@@ -2,6 +2,7 @@ package com.marstechnologiesbrasil.personapi.controller;
 
 import com.marstechnologiesbrasil.personapi.dto.request.PersonDTO;
 import com.marstechnologiesbrasil.personapi.dto.response.MessageResponseDTO;
+import com.marstechnologiesbrasil.personapi.exception.PersonNotFoundException;
 import com.marstechnologiesbrasil.personapi.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +29,10 @@ public class PersonController {
     @GetMapping
     public List<PersonDTO> listAll() {
         return personService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 }

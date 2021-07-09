@@ -1,4 +1,4 @@
-package com.marstechnologiesbrasil.personapi.dto;
+package com.marstechnologiesbrasil.personapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

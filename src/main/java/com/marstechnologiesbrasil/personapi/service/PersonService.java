@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,10 +27,7 @@ public class PersonService {
         Person personToSave = personMapper.toModel(personDTO);
 
         Person savedPerson = personRepository.save(personToSave);
-        return MessageResponseDTO
-                .builder()
-                .message("Created person with ID " + savedPerson.getId())
-                .build();
+        return buildMessageResponseDTO(savedPerson.getId(), "Created");
     }
 
     public List<PersonDTO> listAll() {
@@ -42,9 +38,32 @@ public class PersonService {
     }
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
-        Person person = personRepository.findById(id)
-                .orElseThrow(() -> new PersonNotFoundException(id));
+        Person person = verifyIfPersonExists(id);
 
         return personMapper.toDTO(person);
+    }
+
+    public void deleteById(Long id) throws PersonNotFoundException {
+        verifyIfPersonExists(id);
+
+        personRepository.deleteById(id);
+    }
+
+    private Person verifyIfPersonExists(Long id) throws PersonNotFoundException {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+        return person;
+    }
+
+    private MessageResponseDTO buildMessageResponseDTO(Long id, String operation) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(operation);
+        sb.append(" person with ID ");
+        sb.append(id);
+
+        return MessageResponseDTO
+                .builder()
+                .message(sb.toString())
+                .build();
     }
 }

@@ -3,6 +3,8 @@
 
 This project has been done together with the classes from the GFT Start #2 Bootcamp from 2021 on DIO.
 
+The README bellow was writen using as guide the [file](https://github.com/rpeleias/personapi_digital_innovation_one#readme) writen and shared by the expert during the classes.
+
 <h2>Digital Innovation: GFT Start #2 - Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot</h2>
 
 Neste projeto foi desenvolvido um pequeno sistema para o gerenciamento de pessoas de uma empresa através de uma API REST, criada com o Spring Boot.
@@ -15,12 +17,6 @@ Durante o projeto, foram desenvolvidos e abordados os seguintes tópicos:
 * Relação de cada uma das operações acima com o padrão arquitetural REST, e a explicação de cada um dos conceitos REST envolvidos durante o desenvolvimento do projeto.
 * Desenvolvimento de testes unitários para validação das funcionalidades
 * Implantação do sistema na nuvem através do Heroku
-
-Para executar o projeto no terminal, digite o seguinte comando:
-
-```shell script
-mvn spring-boot:run 
-```
 
 Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a interface Swagger que te ajudará a consumir e entender a API:
 
